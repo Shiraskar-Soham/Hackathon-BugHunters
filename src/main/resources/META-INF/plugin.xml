@@ -16,7 +16,7 @@
   <!-- Register Actions -->
   <actions>
     <action id="AI.Copilot.GenerateCode"
-            class="com.plugin.hackathon.actions.GenerateCodeAction"
+            class="com.plugin.hackathon.GenerateCodeAction"
             text="Generate Code"
             description="Generate code snippets using AI model">
       <add-to-group group-id="EditorPopupMenu" anchor="first"/>
@@ -26,7 +26,7 @@
   <!-- Register Application-level Component -->
   <application-components>
     <component>
-      <implementation-class>com.plugin.hackathon.services.AICopilotService</implementation-class>
+      <implementation-class>com.plugin.hackathon.AICopilotService</implementation-class>
     </component>
   </application-components>
 

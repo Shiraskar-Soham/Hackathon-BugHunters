@@ -1,19 +1,15 @@
-package com.plugin.hackathon.services;
-
-import com.plugin.hackathon.AIModel;
+package com.plugin.hackathon;
 
 public class AICopilotService {
-    private final AIModel aiModel;
-
     private static AICopilotService instance;
+    private AIModel aiModel;
 
-    private AICopilotService() {
-        aiModel = new AIModel();
-    }
+    private AICopilotService() {}
 
-    public static AICopilotService getInstance() {
+    public static synchronized AICopilotService getInstance() {
         if (instance == null) {
             instance = new AICopilotService();
+            instance.aiModel = new AIModel();
         }
         return instance;
     }

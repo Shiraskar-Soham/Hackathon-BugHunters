@@ -1,8 +1,7 @@
-package com.plugin.hackathon.actions;
+package com.plugin.hackathon;
 
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.plugin.hackathon.services.AICopilotService;
 import org.jetbrains.annotations.NotNull;
 
 public class GenerateCodeAction extends AnAction {
@@ -16,7 +15,7 @@ public class GenerateCodeAction extends AnAction {
         }
 
         // Use the service to generate code
-        String generatedCode = AICopilotService.getInstance().generateCode(editor.getDocument().getText());
+        String generatedCode = com.plugin.hackathon.AICopilotService.getInstance().generateCode(editor.getDocument().getText());
 
         // Insert the generated code into the editor at the current caret position
         var document = editor.getDocument();
