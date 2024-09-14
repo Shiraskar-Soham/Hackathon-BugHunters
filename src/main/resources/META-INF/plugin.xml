@@ -1,42 +1,41 @@
-<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-  <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+  <!-- Unique identifier of the plugin -->
   <id>com.plugin.Hackathon</id>
 
-  <!-- Public plugin name should be written in Title Case.
-       Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+  <!-- Public plugin name -->
   <name>Hackathon</name>
 
-  <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+  <!-- Vendor information -->
   <vendor email="support@yourcompany.com" url="https://www.yourcompany.com">YourCompany</vendor>
 
-  <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
-       Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
-       Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+  <!-- Short description -->
   <description><![CDATA[
-    Enter short description for your plugin here.<br>
-    <em>most HTML tags may be used</em>
+    This plugin provides AI-assisted code generation, powered by a custom AI model.
   ]]></description>
 
+  <!-- Register Actions -->
   <actions>
-    <action id="AI.Copilot.GenerateCode" class="com.plugin.hackathon.actions.GenerateCodeAction" text="Generate Code" description="Generate code snippets using AI model">
+    <action id="AI.Copilot.GenerateCode"
+            class="com.plugin.hackathon.actions.GenerateCodeAction"
+            text="Generate Code"
+            description="Generate code snippets using AI model">
       <add-to-group group-id="EditorPopupMenu" anchor="first"/>
     </action>
   </actions>
 
+  <!-- Register Application-level Component -->
   <application-components>
     <component>
       <implementation-class>com.plugin.hackathon.services.AICopilotService</implementation-class>
     </component>
   </application-components>
 
-  <!-- Product and plugin compatibility requirements.
-       Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+  <!-- Declare plugin compatibility dependencies -->
   <depends>com.intellij.modules.platform</depends>
 
-  <!-- Extension points defined by the plugin.
-       Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+  <!-- Define extension points if required -->
   <extensions defaultExtensionNs="com.intellij">
-
+    <!-- Extension points can be added here in the future -->
   </extensions>
+
 </idea-plugin>
