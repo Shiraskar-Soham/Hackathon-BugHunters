@@ -1,19 +1,10 @@
 <idea-plugin>
-  <!-- Unique identifier of the plugin -->
   <id>com.plugin.Hackathon</id>
-
-  <!-- Public plugin name -->
   <name>Hackathon</name>
-
-  <!-- Vendor information -->
   <vendor email="shiraskar.soham@ofbusiness.in" url="https://www.gmail.com">Ofbusiness</vendor>
-
-  <!-- Short description -->
   <description><![CDATA[
     This plugin provides AI-assisted code generation, powered by a custom AI model.
   ]]></description>
-
-  <!-- Register Actions -->
   <actions>
     <action id="AI.Copilot.GenerateCode"
             class="com.plugin.hackathon.GenerateCodeAction"
@@ -22,20 +13,12 @@
       <add-to-group group-id="EditorPopupMenu" anchor="first"/>
     </action>
   </actions>
-
-  <!-- Register Application-level Component -->
   <application-components>
     <component>
       <implementation-class>com.plugin.hackathon.AICopilotService</implementation-class>
     </component>
   </application-components>
-
-  <!-- Declare plugin compatibility dependencies -->
   <depends>com.intellij.modules.platform</depends>
-
-  <!-- Define extension points if required -->
   <extensions defaultExtensionNs="com.intellij">
-    <!-- Extension points can be added here in the future -->
   </extensions>
-
 </idea-plugin>
