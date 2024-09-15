@@ -6,7 +6,6 @@ public class AIModel {
     }
 
     public String generateSnippet(String input) {
-        // Replace this with the actual logic to generate code snippets from your model
         return "Generated code snippet based on input: " + input;
     }
 }

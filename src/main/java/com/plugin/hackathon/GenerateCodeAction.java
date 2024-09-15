@@ -2,25 +2,32 @@ package com.plugin.hackathon;
 
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.command.WriteCommandAction;
+import com.intellij.openapi.editor.Document;
+import com.intellij.openapi.editor.Editor;
+import com.intellij.openapi.ui.Messages;
 import org.jetbrains.annotations.NotNull;
 
 public class GenerateCodeAction extends AnAction {
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent event) {
-        // Get the current editor or project
-        var editor = event.getDataContext().getData(com.intellij.openapi.actionSystem.CommonDataKeys.EDITOR);
+        Editor editor = event.getData(com.intellij.openapi.actionSystem.CommonDataKeys.EDITOR);
         if (editor == null) {
             return;
         }
 
-        // Use the service to generate code
-        String generatedCode = com.plugin.hackathon.AICopilotService.getInstance().generateCode(editor.getDocument().getText());
+        Document document = editor.getDocument();
+        String selectedText = editor.getSelectionModel().getSelectedText();
+        if (selectedText == null || selectedText.isEmpty()) {
+            Messages.showErrorDialog("No code selected. Please select code before generating suggestions.", "Error");
+            return;
+        }
 
-        // Insert the generated code into the editor at the current caret position
-        var document = editor.getDocument();
-        var caretModel = editor.getCaretModel();
-        int offset = caretModel.getOffset();
-        document.insertString(offset, generatedCode);
+        String generatedCode = com.plugin.hackathon.AICopilotService.getInstance().generateCode(selectedText);
+
+        WriteCommandAction.runWriteCommandAction(event.getProject(), () -> {
+            document.insertString(editor.getCaretModel().getOffset(), generatedCode);
+        });
     }
 }
